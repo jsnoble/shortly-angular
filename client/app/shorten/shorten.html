@@ -1,5 +1,12 @@
 <div id='container'>
 <!-- Your code here -->
+<h3>Shorten your link</h3>
+<form name="linkForm" ng-submit="addLink()" novalidate>
+  <input name="link" ng-model="link.url" required placeholder="enter link" type="url">
+  <p ng-show="linkForm.link.$invalid && !linkForm.link.$pristine">url is required</p>
+
+  <button type="submit" ng-disabled="linkForm.$invalid">shorten url</button>
+</form>
 
 </div>
 
