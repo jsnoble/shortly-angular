@@ -1,9 +1,15 @@
 <div id='signin'>
   <h1>signin</h1>
   <form name="signinForm" ng-submit='signin()'>
-    <input type='text'ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>signin</button>
+
+    <input name="username" type='text' ng-model='user.username' ng-minlength="5" ng-maxlength="15" required placeholder="Username needs to be within 5 and 15 characters.">
+
+
+    <input name="password" type="password" ng-model='user.password' ng-minlength="5" ng-maxlength="15" required placeholder="Password needs to be within 5 and 15 characters.">
+
+
+    <button ng-disabled="signinForm.$invalid">signin</button>
+
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>

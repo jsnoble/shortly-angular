@@ -1,13 +1,13 @@
 <div id='container'>
   <!-- Your html here -->
+  <input type= 'text' ng-model="search" placeholder="search here">
   <h3>Here are links</h3>
-  <div ng-repeat='link in data.links'>
+  <div ng-repeat='link in data.links | filter:search | orderBy: "-visits" '>
     <ul>
       <li >{{link.title}}</li>
        <li >visits: {{link.visits}}</li>
        <li >{{link.url}}</li>
        <li><a href="{{link.url}}">{{link.code}}</a></li>
-   <!--<li><a href="{{link.base_url}}/ap{/links/{{link.code}}">{{link.base_url}}/api/linksink.code}}</a></li>-->
     </ul>
 
   </div>
