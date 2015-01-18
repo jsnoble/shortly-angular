@@ -2,11 +2,11 @@
   <h1>signup</h1>
   <form name="signupForm" ng-submit='signup()'>
 
-    <input type='text' ng-model='user.username' ng-minlength="5" ng-maxlength="15" required placeholder="Username needs to be within 5 and 15 characters.">
+    <input type='text' ng-model='user.username'>
 
-    <input type="password" ng-model='user.password'  ng-minlength="5" ng-maxlength="15" required placeholder="Password needs to be within 5 and 15 characters." >
+    <input type="password" ng-model='user.password'>
 
-    <button ng-disabled="signupForm.$invalid">signup</button>
+    <button>signup</button>
 
   </form>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>

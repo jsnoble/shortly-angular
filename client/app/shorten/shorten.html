@@ -1,13 +1,21 @@
-<div id='container'>
+<div class="creator">
 <!-- Your code here -->
 <h3>Shorten your link</h3>
 <form name="linkForm" ng-submit="addLink()" novalidate>
-  <input name="link" ng-model="link.url" required placeholder="enter link" type="url">
-  <p ng-show="linkForm.link.$invalid && !linkForm.link.$pristine">url is required</p>
+  <input name="link" type="url" ng-model="link.url" required
+         placeholder="enter url" ng-class = "{'error': linkForm.$invalid && linkForm.$dirty}" />
 
-  <button type="submit" ng-disabled="linkForm.$invalid">shorten url</button>
+  <button type="submit" value="Shorten" ng-disabled=" linkForm.$invalid">
+    add
+  </button>
 </form>
 
+  <div ng-if="linkForm.link.$.error.required && linkForm.$dirty" class="message">
+    <h2>Url required</h2>
+  </div>
+  <div ng-if="linkForm.link.$.error.url && linkForm.$dirty" class="message">
+    <h2>Not a valid url</h2>
+  </div>
 </div>
 
 

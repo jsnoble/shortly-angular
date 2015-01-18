@@ -3,30 +3,59 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
+  'ui.router',
   'ngRoute'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
-    })
-    .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
-    })
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
-    })
-    .when('/shorten', {
-      templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
-    })
-    .otherwise({
-      redirectTo: '/links'
-    });
-    // Your code here
+.config(function($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
+  //$routeProvider
+  //  .when('/signin', {
+  //    templateUrl: 'app/auth/signin.html',
+  //    controller: 'AuthController'
+  //  })
+  //  .when('/signup', {
+  //    templateUrl: 'app/auth/signup.html',
+  //    controller: 'AuthController'
+  //  })
+  //  .when('/links', {
+  //    templateUrl: 'app/links/links.html',
+  //    controller: 'LinksController'
+  //  })
+  //  .when('/shorten', {
+  //    templateUrl: 'app/shorten/shorten.html',
+  //    controller: 'ShortenController'
+  //  })
+  //  .otherwise({
+  //    redirectTo: '/links'
+  //  });
+
+    $urlRouterProvider.otherwise('.links');
+
+    $stateProvider
+
+      .state('links', {
+        templateUrl: 'app/links/links.html',
+        url:'/links',
+        controller: 'LinksController'
+      })
+      .state('links.child', {
+        template: '<h1>{{ name }}</h1>',
+        url:'/child'
+      })
+      .state('shorten', {
+        templateUrl: 'app/shorten/shorten.html',
+        url: '/shorten',
+        controller: 'ShortenController'
+      })
+      .state('signin', {
+        url:'/signin',
+        templateUrl: 'app/auth/signin.html',
+        controller: 'AuthController'
+      })
+      .state('signup', {
+        url:'/signup',
+        templateUrl : 'app/auth/signup.html' ,
+        controller : 'AuthController'
+      });
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
